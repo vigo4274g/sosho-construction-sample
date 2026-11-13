@@ -222,3 +222,28 @@
 
 /* 採用ページ：ナビが6項目になったので1440px未満は文字を詰める */
 @media (min-width:901px) and (max-width:1439px){.r-header .gnav .en{font-size:21px}.r-header .gnav a{padding:10px 10px}.r-header .gnav .ja{font-size:11px}.entry-btn{width:160px;font-size:22px}}
+
+/* ===== 背景写真（11/13 源斗さん「寂しい所に背景画像を」）
+   写真の帯と無地の帯が交互になるように置く ===== */
+.board{background:linear-gradient(rgba(255,255,255,.86),rgba(240,247,253,.9)),url(img/bg_steel.jpg) center/cover}
+.about{background:linear-gradient(90deg,#fff 0,rgba(255,255,255,.93) 45%,rgba(255,255,255,.55) 100%),url(img/bg_sky.jpg) right center/cover}
+.partner{background:linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)),url(img/bg_helmet.jpg) center/cover}
+.day{background:linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.92)),url(img/bg_morning.jpg) center/cover}
+.r-recruit{background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(240,247,253,.8)),url(img/bg_sky.jpg) center/cover}
+
+/* 全幅の写真帯（スクロールで写真が少し遅れて動く） */
+.photo-band{position:relative;min-height:440px;display:grid;place-items:center;text-align:center;color:#fff;background:url(img/bg_morning.jpg) center/cover fixed;overflow:hidden}
+.photo-band::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,121,201,.55),rgba(22,121,201,.35) 50%,rgba(22,121,201,.6))}
+.photo-band .in{position:relative;padding:90px 20px}
+.photo-band .en{font-family:var(--en);font-weight:600;font-size:15px;letter-spacing:.4em}
+.photo-band h2{font-size:44px;font-weight:800;letter-spacing:.12em;line-height:1.6;margin-top:16px;text-shadow:0 2px 18px rgba(0,0,0,.25)}
+.photo-band p{margin-top:16px;font-size:17px;line-height:2;text-shadow:0 1px 10px rgba(0,0,0,.3)}
+.photo-band.sky{background-image:url(img/bg_sky.jpg)}
+@media (max-width:900px){
+  .photo-band{background-attachment:scroll;min-height:340px}
+  .photo-band h2{font-size:26px;letter-spacing:.06em}
+  .photo-band p{font-size:15px}
+  .about{background:linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)),url(img/bg_sky.jpg) center/cover}
+}
+.photo-band br.sp{display:none}
+@media (max-width:900px){.photo-band br.sp{display:inline}}
