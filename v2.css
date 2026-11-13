@@ -19,15 +19,16 @@
 
 /* ===== ヒーロー（左右分割） ===== */
 .hero2{position:relative;display:grid;grid-template-columns:44% 56%;height:100svh;min-height:680px;max-height:960px;background:var(--bp);color:#fff;overflow:hidden}
-.hero2 .plan{position:relative;padding:150px 0 140px 64px;background-image:linear-gradient(var(--bp-line) 1px,transparent 1px),linear-gradient(90deg,var(--bp-line) 1px,transparent 1px);background-size:32px 32px}
-.hero2 .plan::after{content:"";position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(255,255,255,.2)}
+/* 写真を全面に敷き、文字側だけ紺を重ねる（方眼はやめた 11/13） */
+.hero2 .plan{position:relative;z-index:1;padding:150px 0 140px 64px;background:linear-gradient(90deg,rgba(7,23,84,.9) 0,rgba(7,23,84,.78) 55%,rgba(7,23,84,0) 100%)}
 .hero2 h1{writing-mode:vertical-rl;font-weight:800;font-size:clamp(56px,7vw,104px);line-height:1.25;letter-spacing:.14em;position:absolute;right:56px;top:140px}
 .hero2 h1 em{font-style:normal;color:var(--yellow)}
 .hero2 .lead{position:absolute;left:64px;bottom:150px;max-width:15em;font-size:17px;line-height:2.1}
 .hero2 .lead b{display:block;font-family:var(--en);font-size:12px;letter-spacing:.3em;color:var(--yellow);margin-bottom:12px}
 .hero2 .mark{position:absolute;left:64px;top:140px;font-family:var(--en);font-size:12px;letter-spacing:.2em;line-height:1.9;color:rgba(255,255,255,.55)}
-.hero2 .photo{position:relative;overflow:hidden}
-.hero2 .photo .bg{position:absolute;inset:0;background:url(img/hero.jpg) 30% center/cover;animation:kenburns 18s ease-out both}
+.hero2 .photo{position:absolute;inset:0;overflow:hidden}
+.hero2 .photo .v-dim{z-index:1}
+.hero2 .photo .bg{position:absolute;inset:0;background:url(img/hero.jpg) 65% center/cover;animation:kenburns 18s ease-out both}
 .hero2 .photo .v-dim{position:absolute;right:28px;top:120px;bottom:120px;width:9px;border-block:1px solid #fff;background:linear-gradient(#fff,#fff) center/1px 100% no-repeat;opacity:.8}
 .hero2 .photo .v-dim span{position:absolute;right:16px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-family:var(--en);font-size:11px;letter-spacing:.3em;white-space:nowrap}
 .trades{position:absolute;left:0;right:0;bottom:0;z-index:3;display:grid;grid-template-columns:repeat(5,1fr);background:rgba(7,23,84,.92);border-top:4px solid var(--yellow)}
@@ -162,11 +163,11 @@
 @media (max-width:1100px){.cta-head{display:none}.trades a{padding:16px 12px;font-size:14px;gap:8px}.trades svg{width:24px;height:24px}}
 @media (max-width:900px){
   .hero2{grid-template-columns:1fr;grid-template-rows:auto 1fr;max-height:none;height:auto;min-height:0}
-  .hero2 .plan{padding:100px 20px 40px;min-height:420px}
+  .hero2 .plan{padding:100px 20px 40px;min-height:420px;background:linear-gradient(180deg,rgba(7,23,84,.82) 0,rgba(7,23,84,.6) 55%,rgba(7,23,84,.85) 100%)}
   .hero2 h1{right:20px;top:96px;font-size:54px}
   .hero2 .mark{left:20px;top:100px}
   .hero2 .lead{left:20px;bottom:36px;font-size:15px;max-width:11.5em}
-  .hero2 .photo{height:52svh;min-height:300px}
+  .hero2 .photo{height:auto;min-height:0}
   .hero2 .photo .v-dim{display:none}
   .trades{position:static;grid-template-columns:repeat(5,1fr);grid-column:1}
   .trades a{flex-direction:column;gap:4px;padding:12px 2px;font-size:12px;text-align:center}
@@ -209,7 +210,7 @@
 .hero2::after{display:none}
 
 @media (max-width:900px){
-  .hero2 .plan{display:flex;flex-direction:column;justify-content:space-between;min-height:440px}
+  .hero2 .plan{display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100svh - 64px);max-height:720px}
   .hero2 .lead{position:static;font-size:14px;max-width:none;width:calc(100% - 140px)}
   .hero2 .mark{position:static}
   .board .cell dd{font-size:34px}
